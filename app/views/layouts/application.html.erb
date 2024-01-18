@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MyHouse</title>
+    <title>My House</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <%= render 'layouts/sidebar' %>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+          <%= yield %>
+        </main>
+        <%= render 'layouts/footer' %>
+      </div>
   </body>
 </html>
