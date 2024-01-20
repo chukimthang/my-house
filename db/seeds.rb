@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+GeneralSetting.create(rent: 5100000, electricity_price: 3800, water_price: 30000, surcharge: 100000)

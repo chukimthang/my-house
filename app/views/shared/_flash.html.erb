@@ -1,0 +1,6 @@
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info text-white <%= %w[success notice].include?(type) ? 'bg-success' : 'bg-danger' %>">
+    <%= msg %>
+    <button class="btn-close float-end" data-bs-dismiss="alert">
+  </div>
+<% end %>

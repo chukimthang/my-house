@@ -3,6 +3,8 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "plugin/bootstrap.bundle.min"
 import "plugin/fontawesome"
+import "jquery"
+import "jquery_ujs"
 
 window.addEventListener('DOMContentLoaded', event => {
   // Toggle the side navigation
@@ -18,4 +20,10 @@ window.addEventListener('DOMContentLoaded', event => {
       localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
     });
   }
+});
+
+$(document).on('ready', function(){
+  setTimeout(function() {
+    $(".alert").fadeOut();
+  }, 9000);
 });

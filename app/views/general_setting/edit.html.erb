@@ -1,0 +1,50 @@
+<div class="container-fluid px-5">
+  <h1 class="my-4">Cài đặt chung</h1>
+  <div class="mb-4">
+    <%= form_for @general_setting, url: '/general_setting', method: :patch, html: { class: 'form-horizontal' }  do |f| %>
+      <div class="row form-group mb-4">
+        <%= f.label :rent, class: 'col-md-2' do %>
+          Giá thuê nhà
+          <span class="link-danger">*</span>
+        <% end %>
+        <div class="col-md-6">
+          <%= f.text_field :rent, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row form-group mb-4">
+        <%= f.label :electricity_price, class: 'col-md-2' do %>
+          Giá điện
+          <small><i>(1 số điện)</i></small>
+          <span class="link-danger">*</span>
+        <% end %>
+        <div class="col-md-6">
+          <%= f.text_field :electricity_price, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row form-group mb-4">
+        <%= f.label :water_price, class: 'col-md-2' do %>
+          Giá nước
+          <small><i>(1 khối nước)</i></small>
+          <span class="link-danger">*</span>
+        <% end %>
+        <div class="col-md-6">
+          <%= f.text_field :water_price, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row form-group mb-4">
+        <%= f.label :surcharge, class: 'col-md-2' do %>
+          Phụ thu
+          <span class="link-danger">*</span>
+        <% end %>
+        <div class="col-md-6">
+          <%= f.text_field :surcharge, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row form-group mb-4">
+        <div class="col-md-6 offset-md-2">
+          <%= f.submit 'Cập nhật', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
