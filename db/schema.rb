@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_19_144516) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_20_141950) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_19_144516) do
     t.integer "electricity_price", default: 0, null: false
     t.integer "water_price", default: 0, null: false
     t.integer "surcharge", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meters", force: :cascade do |t|
+    t.date "month_used", null: false
+    t.integer "electricity_index", default: 0, null: false
+    t.integer "water_index", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
