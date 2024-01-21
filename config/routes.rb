@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   get :general_setting, to: "general_setting#edit"
   patch :general_setting, to: "general_setting#update"
+  resources :meters
 end
