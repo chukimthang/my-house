@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
+  devise_for :users, :skip => [:registrations], controllers: { sessions: 'sessions' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -7,5 +7,10 @@ Rails.application.routes.draw do
 
   get :general_setting, to: "general_setting#edit"
   patch :general_setting, to: "general_setting#update"
-  resources :meters
+  resources :meters do
+    member do
+      get :month_information
+    end
+  end
+  resources :bills
 end

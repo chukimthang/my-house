@@ -1,0 +1,74 @@
+<div class="container-fluid px-5">
+  <h1 class="my-4">Chi tiết hoá đơn</h1>
+  <div class="mb-4">
+    <div class="row form-group mb-4">
+      <div class="col-md-2"><h6>Phòng số: </h6></div>
+      <div class="col-md-6"><%= @general_setting.room_name %></div>
+    </div>
+
+    <% if @general_setting.description.present? %>
+      <div class="row form-group mb-4">
+        <div class="col-md-2">Ghi chú: </div>
+        <div class="col-md-6"><%= @general_setting.description %></div>
+      </div>
+    <% end %>
+
+    <div class="row form-group mb-4">
+      <div class="col-md-2"><h6>Tháng sử dụng: </h6></div>
+      <div class="col-md-6"><%= @meter.month_used.strftime('%m/%Y') %></div>
+    </div>
+
+    <h6 class="mb-4">Thông tin điện nước</h6>
+
+    <table class="table table-hover mb-4">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Số mới</th>
+          <th>Số cũ</th>
+          <th>Số dùng</th>
+          <th>Đơn giá</th>
+          <th>Thành tiền</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Điện</td>
+          <td><%= @meter.electricity_index %></td>
+          <td><%= @last_meter.electricity_index %></td>
+          <td><%= @bill.electricity_quantity %></td>
+          <td><%= format_money(@general_setting.electricity_price) %></td>
+          <td><%= format_money(@bill.electricity_cost) %></td>
+        </tr>
+        <tr>
+          <td>Nước</td>
+          <td><%= @meter.water_index %></td>
+          <td><%= @last_meter.water_index %></td>
+          <td><%= @bill.water_quantity %></td>
+          <td><%= format_money(@general_setting.water_price) %></td>
+          <td><%= format_money(@bill.water_cost) %></td>
+        </tr>
+      <tbody>
+    </table>
+
+    <div class="row form-group mb-4">
+      <div class="col-md-2">Tiền nhà: </div>
+      <div class="col-md-6"><%= format_money(@general_setting.rent) %></div>
+    </div>
+
+    <div class="row form-group mb-4">
+      <div class="col-md-2">Số thành viên:</div>
+      <div class="col-md-6"><%= @meter.amount_of_members %></div>
+    </div>
+
+    <div class="row form-group mb-4">
+      <div class="col-md-2">Phụ phí:</div>
+      <div class="col-md-6"><%= format_money(@bill.surcharge_fee) %></div>
+    </div>
+
+    <div class="row form-group mb-4">
+      <div class="col-md-2"><h5>TỔNG TIỀN:</h5></div>
+      <div class="col-md-6"><h5><%= format_money(@bill.total_amount) %></h5></div>
+    </div>
+  </div>
+</div>

@@ -10,15 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_20_141950) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_23_143632) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bills", force: :cascade do |t|
+    t.integer "electricity_quantity", default: 0, null: false
+    t.integer "water_quantity", default: 0, null: false
+    t.integer "electricity_cost", default: 0, null: false
+    t.integer "water_cost", default: 0, null: false
+    t.integer "surcharge_fee", default: 1, null: false
+    t.integer "total_amount", default: 0, null: false
+    t.bigint "meter_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meter_id"], name: "index_bills_on_meter_id"
+  end
 
   create_table "general_settings", force: :cascade do |t|
     t.integer "rent", default: 0, null: false
     t.integer "electricity_price", default: 0, null: false
     t.integer "water_price", default: 0, null: false
     t.integer "surcharge", default: 0, null: false
+    t.string "room_name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,6 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_141950) do
     t.date "month_used", null: false
     t.integer "electricity_index", default: 0, null: false
     t.integer "water_index", default: 0, null: false
+    t.integer "amount_of_members", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

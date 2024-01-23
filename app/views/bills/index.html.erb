@@ -1,0 +1,37 @@
+<div class="container-fluid px-5">
+  <h1 class="my-4">Hoá đơn</h1>
+  <%= link_to 'Tạo hoá đơn', new_bill_path, class: 'btn btn-primary' %>
+  <div class="my-4">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Tháng sử dụng</th>
+          <th>Số điện dùng</th>
+          <th>Số nước dùng</th>
+          <th>Số thành viên</th>
+          <th>Tổng tiền</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bills.each do |bill| %>
+          <tr>
+            <td><%= bill.meter.month_used.strftime('%Y-%m') %></td>
+            <td><%= bill.electricity_quantity %></td>
+            <td><%= bill.water_quantity %></td>
+            <td><%= bill.meter.amount_of_members %></td>
+            <td><%= number_to_currency(bill.total_amount, precision: 0, unit: 'VND', format: "%n %u") %></td>
+            <td>
+              <%= link_to bill_path(bill) do %>
+                <i class="fa-solid fa-eye"></i>
+              <% end %>
+              <%= link_to bill_path(bill), data: { turbo_method: :delete, turbo_confirm: "Bạn có muốn xoá bản ghi này không?" } do %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

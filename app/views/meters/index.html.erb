@@ -8,6 +8,7 @@
           <th>Tháng sử dụng</th>
           <th>Chỉ số điện</th>
           <th>Chỉ số nước</th>
+          <th>Số thành viên</th>
           <th>Ngày tạo</th>
           <th></th>
         </tr>
@@ -18,12 +19,13 @@
             <td><%= meter.month_used.strftime('%Y-%m') %></td>
             <td><%= meter.electricity_index %></td>
             <td><%= meter.water_index %></td>
+            <td><%= meter.amount_of_members %></td>
             <td><%= meter.created_at.strftime('%Y-%m-%d') %></td>
             <td>
               <%= link_to edit_meter_path(meter) do %>
                 <i class="fa-solid fa-pen-to-square"></i>
               <% end %>
-              <%= link_to "/meters/#{meter.id}", :method => :delete, data: { "turbo-method": :delete, confirm: "Bạn có muốn xoá bản ghi này không?" } do %>
+              <%= link_to meter_path(meter), data: { turbo_method: :delete, turbo_confirm: "Bạn có muốn xoá bản ghi này không?" } do %>
                 <i class="fa-solid fa-trash"></i>
               <% end %>
             </td>

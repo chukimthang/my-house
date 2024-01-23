@@ -3,6 +3,15 @@
   <div class="mb-4">
     <%= form_for @general_setting, url: '/general_setting', method: :patch, html: { class: 'form-horizontal' }  do |f| %>
       <div class="row form-group mb-4">
+        <%= f.label :room_name, class: 'col-md-2' do %>
+          Phòng
+          <span class="link-danger">*</span>
+        <% end %>
+        <div class="col-md-6">
+          <%= f.text_field :room_name, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row form-group mb-4">
         <%= f.label :rent, class: 'col-md-2' do %>
           Giá thuê nhà
           <span class="link-danger">*</span>
@@ -38,6 +47,14 @@
         <% end %>
         <div class="col-md-6">
           <%= f.text_field :surcharge, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row form-group mb-4">
+        <%= f.label :description, class: 'col-md-2' do %>
+          Mô tả
+        <% end %>
+        <div class="col-md-6">
+          <%= f.text_area :description, class: 'form-control' %>
         </div>
       </div>
       <div class="row form-group mb-4">

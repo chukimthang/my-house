@@ -4,6 +4,7 @@ class CreateMeters < ActiveRecord::Migration[7.0]
       t.date :month_used, null: false
       t.integer :electricity_index, null: false, default: 0
       t.integer :water_index, null: false, default: 0
+      t.integer :amount_of_members, null: false, default: 1
 
       t.timestamps
     end

@@ -19,6 +19,6 @@ class GeneralSettingController < ApplicationController
   end
 
   def general_setting_params
-    params.require(:general_setting).permit(:rent, :electricity_price, :water_price, :surcharge)
+    params.require(:general_setting).permit(:room_name, :rent, :electricity_price, :water_price, :surcharge, :description)
   end
 end
