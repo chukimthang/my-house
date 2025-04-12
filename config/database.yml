@@ -13,7 +13,7 @@ development:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_PUBLIC_URL'] %>
 
 test:
   <<: *default
