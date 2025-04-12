@@ -6,10 +6,7 @@ default: &default
 
 development:
   <<: *default
-  host: <%= ENV['DB_HOST'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  database: my_house_development
+  url: <%= ENV['DATABASE_URL'] %>
 
 production:
   <<: *default
