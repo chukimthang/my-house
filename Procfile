@@ -1,1 +1,1 @@
-web: bundle exec rails server -e production
+web: bundle exec rails db:prepare && rails server -e production
