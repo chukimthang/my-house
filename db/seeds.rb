@@ -8,6 +8,6 @@
 if User.count.zero?
   User.create(id: 1, email: 'chukimthang94@gmail.com', password: '123456')
 end
-if GeneralSetting.zero?
-  GeneralSetting.create(rent: 5100000, electricity_price: 3800, water_price: 30000, surcharge: 100000)
+if GeneralSetting.count.zero?
+  GeneralSetting.create(rent: 5300000, electricity_price: 3800, water_price: 30000, surcharge: 100000)
 end
