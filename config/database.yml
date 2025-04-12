@@ -1,20 +1,23 @@
 default: &default
   adapter: postgresql
   encoding: utf8
-  host: <%= ENV['DB_HOST'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
   pool: 5
   port: 5432
 
 development:
   <<: *default
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   database: my_house_development
 
 production:
   <<: *default
-  database: my_house_production
+  url: <%= ENV['DATABASE_URL'] %>
 
 test:
   <<: *default
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   database: my_house_test
