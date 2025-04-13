@@ -1,6 +1,6 @@
 # README
 
-### Lệnh dùng cho railway
+### Script railway
 * Truy cập container shell của service trên Railway
   ```
   railway shell
