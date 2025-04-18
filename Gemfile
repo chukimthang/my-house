@@ -74,4 +74,6 @@ end
 
 gem "dotenv-rails"
 gem "devise"
-
+gem "kaminari"
+gem "bootstrap5-kaminari-views"
+gem "ransack"

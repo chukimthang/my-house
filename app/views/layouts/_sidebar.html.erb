@@ -5,18 +5,24 @@
         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
         Bảng điều khiển
       </a>
-      <a class="nav-link" href="<%= meters_path %>">
+      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
         <div class="sb-nav-link-icon"><i class="fa-solid fa-meteor"></i></div>
-        Chỉ số điện nước
+        Quản lý nhà trọ
+        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
       </a>
-      <a class="nav-link" href="<%= bills_path %>">
-        <div class="sb-nav-link-icon"><i class="fa-solid fa-file-invoice"></i></div>
-        Hoá đơn
-      </a>
-      <a class="nav-link" href="<%= general_setting_path %>">
-        <div class="sb-nav-link-icon"><i class="fa-solid fa-gear"></i></div>
-        Cài đặt chung
-      </a>
+      <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+        <nav class="sb-sidenav-menu-nested nav">
+          <a class="nav-link" href="<%= meters_path %>">
+            Chỉ số điện nước
+          </a>
+          <a class="nav-link" href="<%= bills_path %>">
+            Hoá đơn
+          </a>
+          <a class="nav-link" href="<%= general_setting_path %>">
+            Cài đặt
+          </a>
+        </nav>
+      </div>
     </div>
   </div>
 </nav>

@@ -3,7 +3,14 @@ class BillsController < ApplicationController
   before_action :load_general_setting, only: [:new, :show]
 
   def index
-    @bills = Bill.includes(:meter).order('meters.month_used DESC')
+    if params[:q].present?
+      params[:q][:s] = 'meter_month_used desc' if params[:q][:s].blank?
+      params[:q].compact_blank!
+    else
+      params[:q] = { s: 'meter_month_used desc' }
+    end
+    @q = Bill.includes(:meter).ransack(params[:q])
+    @bills = @q.result.page(params[:page]).per(10)
   end
 
   def new

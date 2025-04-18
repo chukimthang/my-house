@@ -2,7 +2,14 @@ class MetersController < ApplicationController
   before_action :load_meter, only: %i[edit update destroy month_information]
 
   def index
-    @meters = Meter.order(month_used: :desc)
+    if params[:q].present?
+      params[:q][:s] = 'month_used desc' if params[:q][:s].blank?
+      params[:q].compact_blank!
+    else
+      params[:q] = { s: 'month_used desc' }
+    end
+    @q = Meter.ransack(params[:q])
+    @meters = @q.result.page(params[:page]).per(10)
   end
 
   def new
