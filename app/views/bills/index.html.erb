@@ -5,11 +5,11 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>Tháng sử dụng</th>
-          <th>Số điện dùng</th>
-          <th>Số nước dùng</th>
+          <th><%= sort_link @q, :meter_month_used, 'Tháng', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :electricity_quantity, 'Số điện dùng', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :water_quantity, 'Số nước dùng', {}, { class: 'text-decoration-none' } %></th>
           <th>Số thành viên</th>
-          <th>Tổng tiền</th>
+          <th><%= sort_link @q, :total_amount, 'Tổng tiền', {}, { class: 'text-decoration-none' } %></th>
           <th></th>
         </tr>
       </thead>
@@ -33,5 +33,6 @@
         <% end %>
       </tbody>
     </table>
+    <%= paginate @bills, theme: 'bootstrap-5' %>
   </div>
 </div>
