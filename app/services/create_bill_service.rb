@@ -3,7 +3,6 @@ class CreateBillService
 
   def initialize(meter_id)
     @meter_id = meter_id
-    @general_setting = GeneralSetting.first
   end
 
   def execute
@@ -13,6 +12,10 @@ class CreateBillService
     bill.water_quantity = water_quantity
     bill.electricity_cost = electricity_cost
     bill.water_cost = water_cost
+    bill.rent = general_setting.rent
+    bill.electricity_unit_price = general_setting.electricity_price
+    bill.water_unit_price = general_setting.water_price
+    bill.surcharge_per_person = general_setting.surcharge
     bill.surcharge_fee = surcharge_fee
     bill.total_amount = general_setting.rent + electricity_cost + water_cost + surcharge_fee
     @is_success = bill.save

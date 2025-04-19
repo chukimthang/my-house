@@ -6,21 +6,21 @@
       <thead>
         <tr>
           <th><%= sort_link @q, :meter_month_used, 'Tháng', {}, { class: 'text-decoration-none' } %></th>
-          <th><%= sort_link @q, :electricity_quantity, 'Số điện dùng', {}, { class: 'text-decoration-none' } %></th>
-          <th><%= sort_link @q, :water_quantity, 'Số nước dùng', {}, { class: 'text-decoration-none' } %></th>
-          <th>Số thành viên</th>
-          <th><%= sort_link @q, :total_amount, 'Tổng tiền', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :electricity_cost, 'Tiền điện (VNĐ)', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :water_cost, 'Tiền nước (VNĐ)', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :surcharge_fee, 'Phụ phí (VNĐ)', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :total_amount, 'Tổng tiền (VNĐ)', {}, { class: 'text-decoration-none' } %></th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <% @bills.each do |bill| %>
           <tr>
-            <td><%= bill.meter.month_used.strftime('%Y-%m') %></td>
-            <td><%= bill.electricity_quantity %></td>
-            <td><%= bill.water_quantity %></td>
-            <td><%= bill.meter.amount_of_members %></td>
-            <td><%= number_to_currency(bill.total_amount, precision: 0, unit: 'VND', format: "%n %u") %></td>
+            <td><%= bill.meter.month_used.strftime('%Y/%m') %></td>
+            <td><%= number_to_currency(bill.electricity_cost, precision: 0, unit: '', format: "%n %u") %></td>
+            <td><%= number_to_currency(bill.water_cost, precision: 0, unit: '', format: "%n %u") %></td>
+            <td><%= number_to_currency(bill.surcharge_fee, precision: 0, unit: '', format: "%n %u") %></td>
+            <td><strong><%= number_to_currency(bill.total_amount, precision: 0, unit: '', format: "%n %u") %></strong></td>
             <td>
               <%= link_to bill_path(bill) do %>
                 <i class="fa-solid fa-eye"></i>

@@ -37,7 +37,7 @@
           <td><%= @meter.electricity_index %></td>
           <td><%= @last_meter.electricity_index %></td>
           <td><%= @bill.electricity_quantity %></td>
-          <td><%= format_money(@general_setting.electricity_price) %></td>
+          <td><%= format_money(@bill.electricity_unit_price) %></td>
           <td><%= format_money(@bill.electricity_cost) %></td>
         </tr>
         <tr>
@@ -45,7 +45,7 @@
           <td><%= @meter.water_index %></td>
           <td><%= @last_meter.water_index %></td>
           <td><%= @bill.water_quantity %></td>
-          <td><%= format_money(@general_setting.water_price) %></td>
+          <td><%= format_money(@bill.water_unit_price) %></td>
           <td><%= format_money(@bill.water_cost) %></td>
         </tr>
       <tbody>
@@ -53,7 +53,7 @@
 
     <div class="row form-group mb-4">
       <div class="col-md-2">Tiền nhà: </div>
-      <div class="col-md-6"><%= format_money(@general_setting.rent) %></div>
+      <div class="col-md-6"><%= format_money(@bill.rent) %></div>
     </div>
 
     <div class="row form-group mb-4">
