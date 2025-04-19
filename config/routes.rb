@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
 
+  get :statistic_summary, to: "home#statistic_summary"
   get :general_setting, to: "general_setting#edit"
   patch :general_setting, to: "general_setting#update"
   resources :meters do
