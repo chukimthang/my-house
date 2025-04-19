@@ -6,6 +6,7 @@
       <thead>
         <tr>
           <th><%= sort_link @q, :meter_month_used, 'Tháng', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :rent, 'Tiền nhà (VNĐ)', {}, { class: 'text-decoration-none' } %></th>
           <th><%= sort_link @q, :electricity_cost, 'Tiền điện (VNĐ)', {}, { class: 'text-decoration-none' } %></th>
           <th><%= sort_link @q, :water_cost, 'Tiền nước (VNĐ)', {}, { class: 'text-decoration-none' } %></th>
           <th><%= sort_link @q, :surcharge_fee, 'Phụ phí (VNĐ)', {}, { class: 'text-decoration-none' } %></th>
@@ -17,6 +18,7 @@
         <% @bills.each do |bill| %>
           <tr>
             <td><%= bill.meter.month_used.strftime('%Y/%m') %></td>
+            <td><%= number_to_currency(bill.rent, precision: 0, unit: '', format: "%n %u") %></td>
             <td><%= number_to_currency(bill.electricity_cost, precision: 0, unit: '', format: "%n %u") %></td>
             <td><%= number_to_currency(bill.water_cost, precision: 0, unit: '', format: "%n %u") %></td>
             <td><%= number_to_currency(bill.surcharge_fee, precision: 0, unit: '', format: "%n %u") %></td>
