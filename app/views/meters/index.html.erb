@@ -8,7 +8,7 @@
           <th><%= sort_link @q, :month_used, 'Tháng', {}, { class: 'text-decoration-none' } %></th>
           <th><%= sort_link @q, :electricity_index, 'Chỉ số điện', {}, { class: 'text-decoration-none' } %></th>
           <th><%= sort_link @q, :water_index, 'Chỉ số nước', {}, { class: 'text-decoration-none' } %></th>
-          <th>Số thành viên</th>
+          <th><%= sort_link @q, :amount_of_members, 'Số thành viên', {}, { class: 'text-decoration-none' } %></th>
           <th><%= sort_link @q, :created_at, 'Ngày tạo', {}, { class: 'text-decoration-none' } %></th>
           <th></th>
         </tr>
@@ -16,11 +16,11 @@
       <tbody>
         <% @meters.each do |meter| %>
           <tr>
-            <td><%= meter.month_used.strftime('%Y-%m') %></td>
+            <td><%= meter.month_used.strftime('%m/%Y') %></td>
             <td><%= meter.electricity_index %></td>
             <td><%= meter.water_index %></td>
             <td><%= meter.amount_of_members %></td>
-            <td><%= meter.created_at.strftime('%Y-%m-%d') %></td>
+            <td><%= meter.created_at.strftime('%d/%m/%Y') %></td>
             <td>
               <%= link_to edit_meter_path(meter) do %>
                 <i class="fa-solid fa-pen-to-square"></i>
