@@ -1,0 +1,41 @@
+<div class="row form-group mb-4">
+  <%= f.label :transaction_date, class: 'col-md-2' do %>
+    Ngày giao dịch
+    <span class="link-danger">*</span>
+  <% end %>
+  <div class="col-md-6">
+    <%= f.date_field :transaction_date, class: 'form-control' %>
+  </div>
+</div>
+<div class="row form-group mb-4">
+  <%= f.label :transaction_type, class: 'col-md-2' do %>
+    Loại giao dịch
+    <span class="link-danger">*</span>
+  <% end %>
+  <div class="col-md-6">
+    <%= f.select :transaction_type, GoldInvestment.transaction_types.map { |k,_| [GoldInvestment::TRANSACTION_TYPE[k.to_sym], k] }, {}, class: 'form-control' %>
+  </div>
+</div>
+<div class="row form-group mb-4">
+  <%= f.label :number_of_chi, class: 'col-md-2' do %>
+    Số lượng chỉ
+    <span class="link-danger">*</span>
+  <% end %>
+  <div class="col-md-6">
+    <%= f.text_field :number_of_chi, class: 'form-control' %>
+  </div>
+</div>
+<div class="row form-group mb-4">
+  <%= f.label :unit_price, class: 'col-md-2' do %>
+    Đơn giá
+    <span class="link-danger">*</span>
+  <% end %>
+  <div class="col-md-6">
+    <%= f.text_field :unit_price, class: 'form-control' %>
+  </div>
+</div>
+<div class="row form-group mb-4">
+  <div class="col-md-6 offset-md-2">
+    <%= f.submit 'Lưu', class: 'btn btn-primary' %>
+  </div>
+</div>

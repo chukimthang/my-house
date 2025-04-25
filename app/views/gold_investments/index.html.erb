@@ -1,0 +1,48 @@
+<div class="container-fluid px-5">
+  <h1 class="my-4">Đầu tư vàng</h1>
+  <%= link_to 'Thêm', new_gold_investment_path, class: 'btn btn-primary' %>
+  <div class="my-4">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th><%= sort_link @q, :transaction_date, 'Ngày giao dịch', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :transaction_type, 'Loại giao dịch', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :unit_price, 'Đơn giá', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :number_of_chi, 'Số chỉ', {}, { class: 'text-decoration-none' } %></th>
+          <th>Thành tiền</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @gold_investments.each do |gold_investment| %>
+          <tr>
+            <td><%= gold_investment.transaction_date&.strftime('%d/%m/%Y') %></td>
+            <td><%= GoldInvestment::TRANSACTION_TYPE[gold_investment.transaction_type.to_sym] %></td>
+            <td><%= format_money(gold_investment.unit_price) %></td>
+            <td><%= gold_investment.number_of_chi %></td>
+            <td><%= format_money(gold_investment.number_of_chi * gold_investment.unit_price) %></td>
+            <td>
+              <%= link_to edit_gold_investment_path(gold_investment) do %>
+                <i class="fa-solid fa-pen-to-square"></i>
+              <% end %>
+              <%= link_to gold_investment_path(gold_investment), data: { turbo_method: :delete, turbo_confirm: "Bạn có muốn xoá bản ghi này không?" } do %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        <tr class="fw-bold">
+          <td colspan="3" class="text-center">Tổng mua</td>
+          <td><%= @total_buy_chi %></td>
+          <td><%= format_money(@total_buy_price) %><td>
+        </tr>
+        <tr class="fw-bold">
+          <td colspan="3" class="text-center">Tổng bán</td>
+          <td><%= @total_sell_chi %></td>
+          <td><%= format_money(@total_sell_price) %><td>
+        </tr>
+      </tbody>
+    </table>
+    <%= paginate @gold_investments, theme: 'bootstrap-5' %>
+  </div>
+</div>

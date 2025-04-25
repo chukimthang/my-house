@@ -1,0 +1,8 @@
+<div class="container-fluid px-5">
+  <h1 class="my-4">Sửa thông tin</h1>
+  <div class="mb-4">
+    <%= form_for @gold_investment, url: { action: 'update' }, html: { class: 'form-horizontal' }  do |f| %>
+      <%= render 'form', f: f %>
+    <% end %>
+  </div>
+</div>
