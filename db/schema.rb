@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_25_144327) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_26_142137) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,16 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_25_144327) do
     t.integer "electricity_index", default: 0, null: false
     t.integer "water_index", default: 0, null: false
     t.integer "amount_of_members", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "savings_accounts", force: :cascade do |t|
+    t.date "savings_date"
+    t.decimal "sacombank_amount", precision: 15, scale: 2, default: "0.0", null: false
+    t.decimal "tpbank_amount", precision: 15, scale: 2, default: "0.0", null: false
+    t.decimal "vietcombank_amount", precision: 15, scale: 2, default: "0.0", null: false
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

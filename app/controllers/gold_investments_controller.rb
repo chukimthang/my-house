@@ -56,7 +56,7 @@ class GoldInvestmentsController < ApplicationController
   private
 
   def gold_investment_params
-    params.require(:gold_investment).permit(:number_of_chi, :unit_price, :transaction_type, :transaction_date)
+    params.require(:gold_investment).permit(:number_of_chi, :unit_price, :transaction_type, :transaction_date, :description)
   end
 
   def load_gold_investment

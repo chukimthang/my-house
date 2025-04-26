@@ -1,0 +1,38 @@
+<div class="container-fluid px-5">
+  <h1 class="my-4">Tiết kiệm</h1>
+  <%= link_to 'Thêm', new_savings_account_path, class: 'btn btn-primary' %>
+  <div class="my-4">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th><%= sort_link @q, :savings_date, 'Ngày', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :sacombank_amount, 'Sacombank', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :tpbank_amount, 'Tpbank', {}, { class: 'text-decoration-none' } %></th>
+          <th><%= sort_link @q, :vietcombank_amount, 'Vietcombank', {}, { class: 'text-decoration-none' } %></th>
+          <th>Tổng tiền</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @savings_accounts.each do |savings_account| %>
+          <tr>
+            <td><%= savings_account.savings_date&.strftime('%d/%m/%Y') %></td>
+            <td><%= format_money(savings_account.sacombank_amount) %></td>
+            <td><%= format_money(savings_account.tpbank_amount) %></td>
+            <td><%= format_money(savings_account.vietcombank_amount) %></td>
+            <td><%= format_money(savings_account.sacombank_amount + savings_account.tpbank_amount + savings_account.vietcombank_amount) %></td>
+            <td>
+              <%= link_to edit_savings_account_path(savings_account) do %>
+                <i class="fa-solid fa-pen-to-square"></i>
+              <% end %>
+              <%= link_to savings_account_path(savings_account), data: { turbo_method: :delete, turbo_confirm: "Bạn có muốn xoá bản ghi này không?" } do %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @savings_accounts, theme: 'bootstrap-5' %>
+  </div>
+</div>
