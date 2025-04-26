@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   end
   resources :bills
   resources :gold_investments
+  resources :savings_accounts
 end

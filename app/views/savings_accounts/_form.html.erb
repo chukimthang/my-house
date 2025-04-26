@@ -1,37 +1,37 @@
 <div class="row form-group mb-4">
-  <%= f.label :transaction_date, class: 'col-md-2' do %>
-    Ngày giao dịch
+  <%= f.label :savings_date, class: 'col-md-2' do %>
+    Ngày
     <span class="link-danger">*</span>
   <% end %>
   <div class="col-md-6">
-    <%= f.date_field :transaction_date, class: 'form-control' %>
+    <%= f.date_field :savings_date, class: 'form-control' %>
   </div>
 </div>
 <div class="row form-group mb-4">
-  <%= f.label :transaction_type, class: 'col-md-2' do %>
-    Loại giao dịch
+  <%= f.label :sacombank_amount, class: 'col-md-2' do %>
+    Sacombank
     <span class="link-danger">*</span>
   <% end %>
   <div class="col-md-6">
-    <%= f.select :transaction_type, GoldInvestment.transaction_types.map { |k,_| [GoldInvestment::TRANSACTION_TYPE[k.to_sym], k] }, {}, class: 'form-control' %>
+    <%= f.text_field :sacombank_amount, class: 'form-control' %>
   </div>
 </div>
 <div class="row form-group mb-4">
-  <%= f.label :number_of_chi, class: 'col-md-2' do %>
-    Số lượng chỉ
+  <%= f.label :tpbank_amount, class: 'col-md-2' do %>
+    TPbank
     <span class="link-danger">*</span>
   <% end %>
   <div class="col-md-6">
-    <%= f.text_field :number_of_chi, class: 'form-control' %>
+    <%= f.text_field :tpbank_amount, class: 'form-control' %>
   </div>
 </div>
 <div class="row form-group mb-4">
-  <%= f.label :unit_price, class: 'col-md-2' do %>
-    Đơn giá
+  <%= f.label :vietcombank_amount, class: 'col-md-2' do %>
+    Vietcombank
     <span class="link-danger">*</span>
   <% end %>
   <div class="col-md-6">
-    <%= f.text_field :unit_price, class: 'form-control' %>
+    <%= f.text_field :vietcombank_amount, class: 'form-control' %>
   </div>
 </div>
 <div class="row form-group mb-4">
